@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { Board } from './model/Board';
+import BoardComponent from './components/BoardComponent';
+import SettingFormComponent from './components/SettingFormComponent';
 
 function App() {
+
+
+  const [board, setBoard] = useState( new Board());
+
+  useEffect(()=>{
+    restart();
+  }, [])
+
+  function restart() {
+    const newBoard = new Board();
+    newBoard.initBoard();
+    setBoard(newBoard);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>Tic Tac Toe</h1>
+      <SettingFormComponent/>
+      <BoardComponent board={board} setBoard={setBoard}/>
     </div>
   );
 }
