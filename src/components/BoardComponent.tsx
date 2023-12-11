@@ -22,6 +22,7 @@ const BoardComponent: FC<BoardProps> = ({board, setBoard}) => {
             cell.available = false;
             cell.filled = 'player';
             dispatch(playerTurn(cell.x));
+            console.log( playerCells );
         }
     }
 

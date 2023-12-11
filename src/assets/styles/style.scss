@@ -6,6 +6,21 @@ body {
     margin: 0;
     padding: 0;
     background-color: #c7cfb7;
+    color: #557174;
+}
+
+button {
+
+    padding: 5px 10px;
+    font-size: 17px;
+    font-family: cursive;
+    background-color: #557174;
+    color: #c7cfb7;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+
+
 }
 
 .app {
@@ -40,20 +55,23 @@ body {
                 border-right: 1px solid #557174;
                 border-bottom: 1px solid #557174;
             }
+
             &:nth-child(3),
             &:nth-child(6) {
 
                 border-bottom: 1px solid #557174;
 
             }
+
             &:nth-child(8) {
                 border-right: 1px solid #557174;
                 border-left: 1px solid #557174;
 
             }
+
             &.available {
                 cursor: pointer;
-                }
+            }
         }
 
 
@@ -70,5 +88,4 @@ body {
     font-weight: bold;
     color: #9dad7f;
     font-family: cursive;
-    }
-
+}
