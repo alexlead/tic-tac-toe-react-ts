@@ -4,26 +4,23 @@ export type CellFillType = "player" | "PC" | null;
 
 export class Cell {
 
-readonly x: number;
+    readonly id: number;
     board: Board;
     available: boolean;
-    id: number;
+    // id: number;
     filled: CellFillType;
 
 
-constructor (board: Board, x: number  ) {
+    constructor(board: Board, x: number) {
+        this.board = board;
+        this.id = x;
+        this.available = true;
+        this.filled = null;
+    }
 
-    this.board = board;
-    this.x = x;
-    this.id = Math.random();
-    this.available = true;
-    this.filled = null;
-
-}
-
-public setFilled ( filled: CellFillType) {
-    this.filled = filled;
-}
+    public setFilled(filled: CellFillType) {
+        this.filled = filled;
+    }
 
 
 
