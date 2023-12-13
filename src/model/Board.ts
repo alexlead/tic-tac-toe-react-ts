@@ -44,10 +44,9 @@ export class Board  {
     }
 
 
-    public checkAvailableCells (): void {
-        for( let i = 0 ; i < 9 ; i++) {
-            this.gameRunning = this.cells.every(cell => !cell.available);
-        }
+    public checkAvailableCells (): boolean {    
+             this.gameRunning = this.cells.every(cell => !cell.available);
+             return this.gameRunning;
     }
 
 

@@ -1,64 +1,46 @@
-import React, { FC,  useEffect,  useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Board } from '../model/Board'
 import CellComponent from './CellComponent';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Cell } from '../model/Cell';
 import { aiPlayerTurn, playerTurn } from '../redux/tictactoe/sliceTictactoe';
-// import { RootState } from '../redux/store';
+import { AIPlayer } from '../model/AIPlayer';
 
 interface BoardProps {
     board: Board;
     setBoard: (board: Board) => void;
+    AIPCplayer: AIPlayer;
+    setAIPCplayer: (AIPCplayer: AIPlayer) => void;
 }
 
 export type TurnStatus = "Player" | "PC" | null;
 
-const BoardComponent: FC<BoardProps> = ({board, setBoard}) => {
-
-    // const playerCells = useSelector((state: RootState)=> state.tictactoe.playerCells);
-    // const PCCells = useSelector((state: RootState)=> state.tictactoe.PCCells);
+const BoardComponent: FC<BoardProps> = ({ board, setBoard, AIPCplayer, setAIPCplayer }) => {
 
     const dispatch = useDispatch();
 
-    const [turn, setTurn] =useState<TurnStatus>("Player");
-
-    useEffect( ()=> {
-
-      
-        if ( turn === "PC" ) {
-            
-            const PCselectCell = Math.floor(Math.random()*9);
-            console.log( PCselectCell );
-            board.cells.forEach(item => {
-                if ( item.id === PCselectCell && item.available ) {
-
-                    setTurn('Player');
-                    item.available = false;
-                    item.filled = 'PC';
-                    dispatch(aiPlayerTurn(item.id)); 
-                }                 
-            })
-            }  
-
-
-    }, [turn, board.cells, dispatch])
-    
-    function selectCell ( cell: Cell) {
-        if(cell.available ) {
-            setTurn('PC')
-            cell.available = false;
-            cell.filled = 'player';
-            dispatch(playerTurn(cell.id));            
+    function PCTurn() {
+        if (!board.checkAvailableCells() && !board.gameRunning) {
+            dispatch(aiPlayerTurn(AIPCplayer.PCRandomTurn(board)));
         }
     }
 
-  return (
-    <div className='board'>
-        {
-            board.cells?.map((cell, index)=><CellComponent key={index} cell={cell} selectCell={()=>selectCell(cell)}/>)
+    function selectCell(cell: Cell) {
+        if (cell.available && !board.checkAvailableCells() && !board.gameRunning) {
+            cell.available = false;
+            cell.filled = 'player';
+            dispatch(playerTurn(cell.id));
+            PCTurn();
         }
-    </div>
-  )
+    }
+
+    return (
+        <div className='board'>
+            {
+                board.cells?.map((cell, index) => <CellComponent key={index} cell={cell} selectCell={() => selectCell(cell)} />)
+            }
+        </div>
+    )
 }
 
 export default BoardComponent

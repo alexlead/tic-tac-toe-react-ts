@@ -27,8 +27,9 @@ const SettingFormComponent: FC<SettingProps> = ({board, restart}) => {
       setWinner(null);
     }
     
-    if ( !winner && !board.gameRunning) {
-
+    if ( board.checkAvailableCells() && !winner) {
+      
+      setWinner("drawn");
     }
 }, [playerCells, board, winner]);
 
@@ -44,9 +45,7 @@ const SettingFormComponent: FC<SettingProps> = ({board, restart}) => {
   return (
     <div className='setting-form'>
         <button onClick={restart}>New Game</button>
-        <p>First turn by Player</p>
       {
-
         winner !== null ? (
           winner === "Player" ? (<div className='winner'><span className='star'></span> Player is winner! <span className='star'></span></div>)
           : (winner === "PC" ? (<div className='winner'><span className='star'></span> PC is winner! <span className='star'></span></div>) : (

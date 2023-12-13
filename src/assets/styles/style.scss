@@ -34,7 +34,7 @@ button {
 
     .board {
 
-        width: calc(150px*3);
+        width: calc(152px*3);
         display: flex;
         flex-wrap: wrap;
 
@@ -47,27 +47,7 @@ button {
             display: flex;
             justify-content: center;
             align-items: center;
-
-            &:nth-child(1),
-            &:nth-child(4),
-            &:nth-child(2),
-            &:nth-child(5) {
-                border-right: 1px solid #557174;
-                border-bottom: 1px solid #557174;
-            }
-
-            &:nth-child(3),
-            &:nth-child(6) {
-
-                border-bottom: 1px solid #557174;
-
-            }
-
-            &:nth-child(8) {
-                border-right: 1px solid #557174;
-                border-left: 1px solid #557174;
-
-            }
+            margin: 1px;
 
             &.available {
                 cursor: pointer;
