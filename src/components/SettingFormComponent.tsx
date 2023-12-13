@@ -7,11 +7,12 @@ import { Board } from '../model/Board';
 interface SettingProps {
   board: Board;
   restart: ()=> void;
+  firstTurn: string;
 }
 
 type Winner = 'Player' | 'PC' | 'drawn' | null;
 
-const SettingFormComponent: FC<SettingProps> = ({board, restart}) => {
+const SettingFormComponent: FC<SettingProps> = ({board, restart, firstTurn}) => {
 
   const playerCells = useSelector((state: RootState)=> state.tictactoe.playerCells);
   const PCCells = useSelector((state: RootState)=> state.tictactoe.PCCells);
@@ -21,6 +22,7 @@ const SettingFormComponent: FC<SettingProps> = ({board, restart}) => {
   useEffect ( ()=> {
     if ( board.checkWinner( playerCells ) ) {
       setWinner("Player");
+      board.setWinner('Player');
     };
     
     if( !playerCells.length) {
@@ -36,8 +38,15 @@ const SettingFormComponent: FC<SettingProps> = ({board, restart}) => {
   useEffect ( ()=> {
     if ( board.checkWinner( PCCells ) ) {
       setWinner("PC");
+      board.setWinner("PC");
     };
-}, [PCCells, board]);
+
+    if ( board.checkAvailableCells() && !winner) {
+      
+      setWinner("drawn");
+    }
+
+}, [PCCells, board, winner]);
 
 
 
@@ -45,11 +54,32 @@ const SettingFormComponent: FC<SettingProps> = ({board, restart}) => {
   return (
     <div className='setting-form'>
         <button onClick={restart}>New Game</button>
+        <p>{firstTurn} turns first!</p>
       {
         winner !== null ? (
-          winner === "Player" ? (<div className='winner'><span className='star'></span> Player is winner! <span className='star'></span></div>)
-          : (winner === "PC" ? (<div className='winner'><span className='star'></span> PC is winner! <span className='star'></span></div>) : (
-            winner === "drawn" && <div className='winner'>Drawn game!</div>
+
+          winner === "Player" ? (           
+          <div className="ribbon">
+          <div className="ribbon-stitches-top"></div>
+          <div className="ribbon-content"><p className='winner'><span className='star'></span> Player is winner! <span className='star'></span></p></div>
+          <div className="ribbon-stitches-bottom"></div>
+          </div>
+          )
+          : (winner === "PC" ? (
+            <div className="ribbon">
+          <div className="ribbon-stitches-top"></div>
+          <div className="ribbon-content"><p className='winner'><span className='star'></span> PC is winner! <span className='star'></span></p></div>
+          <div className="ribbon-stitches-bottom"></div>
+          </div>
+          
+          ) : (
+            winner === "drawn" && 
+            
+            <div className="ribbon">
+          <div className="ribbon-stitches-top"></div>
+          <div className="ribbon-content"><p className='winner'>Drawn game!</p></div>
+          <div className="ribbon-stitches-bottom"></div>
+          </div>
           ) )
           ) : (
             <div className='winner'></div>

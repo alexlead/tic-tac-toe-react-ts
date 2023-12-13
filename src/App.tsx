@@ -10,30 +10,31 @@ function App() {
 
 
   const [board, setBoard] = useState( new Board());
-  const [AIPCplayer, setAIPCPlayer] = useState(new AIPlayer);
-
+  const [AIPCplayer, setAIPCPlayer] = useState(new AIPlayer());
+  const [firstTurn, setFirstTurn ] =useState("Human");
   const dispatch = useDispatch();
-
-  useEffect(()=>{
-    restart();
-  }, []);
 
   function restart() {
     const newBoard = new Board();
     newBoard.initBoard();
     setBoard(newBoard);
-
-    setAIPCPlayer(new AIPlayer);
-
+    setAIPCPlayer(new AIPlayer());
     dispatch( clearTurns() );
-
+    setFirstTurn( Math.round(Math.random()) > 0 ? "Human":"PC" );
   }
+  
+  useEffect(()=>{
+    restart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
+
+
 
   return (
     <div className="app">
       <h1>Tic Tac Toe</h1>
-      <SettingFormComponent board={board} restart={restart}/>
-      <BoardComponent board={board} setBoard={setBoard} AIPCplayer={AIPCplayer} setAIPCplayer={setAIPCPlayer}/>
+      <SettingFormComponent board={board} restart={restart} firstTurn={firstTurn}/>
+      <BoardComponent board={board} setBoard={setBoard} AIPCplayer={AIPCplayer} setAIPCplayer={setAIPCPlayer} firstTurn={firstTurn}/>
     </div>
   );
 }

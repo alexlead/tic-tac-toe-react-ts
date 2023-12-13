@@ -5,7 +5,7 @@ export class Board  {
     cells: Cell[] = [];
     winnerCombinations: number[][] = [];
     gameRunning: boolean;
-
+    winner: string;
 
     constructor () {
 
@@ -21,6 +21,7 @@ export class Board  {
         ];
 
         this.gameRunning = true;
+        this.winner = "";
     }
 
 
@@ -43,6 +44,13 @@ export class Board  {
         return false;
     }
 
+    public setWinner (winner: string) {
+        this.winner = winner;
+    }
+
+    public getWinner (): string {
+        return this.winner;
+    }
 
     public checkAvailableCells (): boolean {    
              this.gameRunning = this.cells.every(cell => !cell.available);

@@ -29,7 +29,7 @@ useEffect( () => {
   return (
     <div className={['cell', cell.available ? "available": ""].join(' ')} onClick={()=>selectCell(cell)}>
         
-   <div className="PC">{filled === "player" ? "X" : filled === "PC" ? "O" : "" }</div>
+   <div className={filled === "player" ? "player" : filled === "PC" ? "PC" : "" }>{filled === "player" ? "X" : filled === "PC" ? "O" : "" }</div>
       
 
     </div>

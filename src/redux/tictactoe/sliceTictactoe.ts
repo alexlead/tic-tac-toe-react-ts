@@ -3,7 +3,9 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
+    // eslint-disable-next-line 
     playerCells: <number[]>[],
+    // eslint-disable-next-line 
     PCCells:  <number[]>[]
 }
 
