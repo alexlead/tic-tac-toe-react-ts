@@ -11,9 +11,9 @@
 
 ## Install and Run
 
-`npm install`   - installing all modules
-`npm start`     - start App
-default URL `http://localhost:3000/`
+`npm install`   - installing all modules <br />
+`npm start`     - start App <br/>
+default URL `http://localhost:3000/` <br />
 
 ## Test App
 
