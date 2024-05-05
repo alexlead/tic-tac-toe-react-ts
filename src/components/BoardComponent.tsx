@@ -18,9 +18,9 @@ interface BoardProps {
 
 export type TurnStatus = "Player" | "PC" | null;
 
-const BoardComponent: FC<BoardProps> = ({ board, setBoard, AIPCplayer, setAIPCplayer , firstTurn}) => {
-    const playerCells = useSelector((state: RootState)=> state.tictactoe.playerCells);
-    const PCCells = useSelector((state: RootState)=> state.tictactoe.PCCells);
+const BoardComponent: FC<BoardProps> = ({ board, setBoard, AIPCplayer, setAIPCplayer, firstTurn }) => {
+    const playerCells = useSelector((state: RootState) => state.tictactoe.playerCells);
+    const PCCells = useSelector((state: RootState) => state.tictactoe.PCCells);
     const dispatch = useDispatch();
 
     function PCTurn() {
@@ -30,19 +30,19 @@ const BoardComponent: FC<BoardProps> = ({ board, setBoard, AIPCplayer, setAIPCpl
         }
     }
 
-    useEffect(()=>{
-        if(playerCells.length>0 || firstTurn==="PC") {
+    useEffect(() => {
+        if (playerCells.length > 0 || firstTurn === "PC") {
             PCTurn();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [playerCells])
 
     function selectCell(cell: Cell) {
-        if (cell.available && !board.checkAvailableCells() && board.getWinner() === "" ) {
+        if (cell.available && !board.checkAvailableCells() && board.getWinner() === "") {
             dispatch(playerTurn(cell.id));
             cell.available = false;
             cell.filled = 'player';
-            
+
         }
     }
 

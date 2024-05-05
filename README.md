@@ -7,6 +7,7 @@
 - useEffect
 - useSelector
 - models OOP
+- Jest
 
 ## Install and Run
 

@@ -5,32 +5,32 @@ import { RootState } from '../redux/store';
 
 
 interface CellProps {
-    cell: Cell;
-    selectCell: (cell: Cell) => void;
+  cell: Cell;
+  selectCell: (cell: Cell) => void;
 }
 
-const CellComponent: FC<CellProps> = ({cell, selectCell}) => {
+const CellComponent: FC<CellProps> = ({ cell, selectCell }) => {
 
-  const playerCells = useSelector((state: RootState)=> state.tictactoe.playerCells);
-  const PCCells = useSelector((state: RootState)=> state.tictactoe.PCCells);
+  const playerCells = useSelector((state: RootState) => state.tictactoe.playerCells);
+  const PCCells = useSelector((state: RootState) => state.tictactoe.PCCells);
 
-  const [ filled , setFilled ] = useState<string | null>("");
+  const [filled, setFilled] = useState<string | null>("");
 
-useEffect( () => {
-  if( playerCells.includes(cell.id) || PCCells.includes(cell.id) ) {
-    setFilled(cell.filled);
-  } else {
-    
-    setFilled(null);
-  }
+  useEffect(() => {
+    if (playerCells.includes(cell.id) || PCCells.includes(cell.id)) {
+      setFilled(cell.filled);
+    } else {
 
-}, [playerCells, PCCells, cell])
+      setFilled(null);
+    }
+
+  }, [playerCells, PCCells, cell])
 
   return (
-    <div className={['cell', cell.available ? "available": ""].join(' ')} onClick={()=>selectCell(cell)}>
-        
-   <div className={filled === "player" ? "player" : filled === "PC" ? "PC" : "" }>{filled === "player" ? "X" : filled === "PC" ? "O" : "" }</div>
-      
+    <div className={['cell', cell.available ? "available" : ""].join(' ')} onClick={() => selectCell(cell)}>
+
+      <div className={filled === "player" ? "player" : filled === "PC" ? "PC" : ""}>{filled === "player" ? "X" : filled === "PC" ? "O" : ""}</div>
+
 
     </div>
   )

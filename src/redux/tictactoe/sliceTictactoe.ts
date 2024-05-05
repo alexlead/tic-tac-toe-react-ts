@@ -6,19 +6,19 @@ const initialState = {
     // eslint-disable-next-line 
     playerCells: <number[]>[],
     // eslint-disable-next-line 
-    PCCells:  <number[]>[]
+    PCCells: <number[]>[]
 }
 
 export const sliceTictactoe = createSlice({
     name: 'tictactoe',
     initialState,
     reducers: {
-        playerTurn: (state, action: PayloadAction<number>)=> {
+        playerTurn: (state, action: PayloadAction<number>) => {
 
             state.playerCells.push(action.payload);
-    
+
         },
-        aiPlayerTurn: (state, action: PayloadAction<number>)=> {
+        aiPlayerTurn: (state, action: PayloadAction<number>) => {
             state.PCCells.push(action.payload);
         },
         clearTurns: (state) => {
@@ -29,5 +29,5 @@ export const sliceTictactoe = createSlice({
 })
 
 
-export const { playerTurn,  aiPlayerTurn, clearTurns } = sliceTictactoe.actions;
+export const { playerTurn, aiPlayerTurn, clearTurns } = sliceTictactoe.actions;
 export default sliceTictactoe.reducer;

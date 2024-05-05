@@ -7,7 +7,6 @@ export class Cell {
     readonly id: number;
     board: Board;
     available: boolean;
-    // id: number;
     filled: CellFillType;
 
 

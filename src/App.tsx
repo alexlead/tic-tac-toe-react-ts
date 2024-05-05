@@ -8,7 +8,6 @@ import { AIPlayer } from './model/AIPlayer';
 
 function App() {
 
-
   const [board, setBoard] = useState(new Board());
   const [AIPCplayer, setAIPCPlayer] = useState(new AIPlayer());
   const [firstTurn, setFirstTurn] = useState("Human");
@@ -26,8 +25,6 @@ function App() {
   useEffect(() => {
     restart();
   }, []);
-
-
 
   return (
     <div className="app">
