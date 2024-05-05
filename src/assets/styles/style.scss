@@ -69,133 +69,94 @@ button {
     color: #9dad7f;
     font-family: cursive;
 }
-.player{
+
+.player {
     color: #557174;
-    }
-.setting-form{
+}
+
+.setting-form {
     text-align: center;
+}
+
+.winner {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .star {
+        position: relative;
+
+        display: inline-block;
+        width: 0;
+        height: 0;
+
+        margin-left: 1.9em;
+        margin-right: 1.9em;
+        margin-bottom: 1.2em;
+
+        border-right: .3em solid transparent;
+        border-bottom: .7em solid #f7f7e8;
+        border-left: .3em solid transparent;
+
+        /* Controlls the size of the stars. */
+        font-size: 24px;
+
+        &:before,
+        &:after {
+            content: '';
+
+            display: block;
+            width: 0;
+            height: 0;
+
+            position: absolute;
+            top: .6em;
+            left: -1em;
+
+            border-right: 1em solid transparent;
+            border-bottom: .7em solid #f7f7e8;
+            border-left: 1em solid transparent;
+
+            transform: rotate(-35deg);
+        }
+
+        &:after {
+            transform: rotate(35deg);
+        }
     }
+}
 
-.winner{
 
- display: flex;
- justify-content: center;
- align-items: center;
-
-.star {
-  position: relative;
-  
-  display: inline-block;
-  width: 0;
-  height: 0;
-  
-  margin-left: 1.9em;
-  margin-right: 1.9em;
-  margin-bottom: 1.2em;
-  
-  border-right:  .3em solid transparent;
-  border-bottom: .7em  solid #f7f7e8;
-  border-left:   .3em solid transparent;
-
-  /* Controlls the size of the stars. */
-  font-size: 24px;
-  
-  &:before, &:after {
-    content: '';
-    
-    display: block;
-    width: 0;
-    height: 0;
-    
+.ribbon {
+    width: 416px;
     position: absolute;
-    top: .6em;
-    left: -1em;
-  
-    border-right:  1em solid transparent;
-    border-bottom: .7em  solid #f7f7e8;
-    border-left:   1em solid transparent;
-  
-    transform: rotate(-35deg);
-  }
-  
-  &:after {  
-    transform: rotate(35deg);
-  }
-}
-}
-
-
-    .ribbon {
-     width: 416px;
-     position: absolute;
-     left: 50%;
-     margin-left: -208px;
-     text-align: center;
-     font-size: 22px !important;
-     background: #9DAD7F;
-     background: linear-gradient(to bottom, #9DAD7F, #557174);
-     box-shadow: rgba(0,0,0,0.3) 0 1px 1px;
-     font-family: 'Helvetica Neue',Helvetica, sans-serif;
+    left: 50%;
+    margin-left: -208px;
+    text-align: center;
+    font-size: 22px !important;
+    background: #9DAD7F;
+    background: linear-gradient(to bottom, #9DAD7F, #557174);
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 1px;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 .ribbon p {
-     font-size: 25px !important;
-     color: #C7CFB7;
-     text-shadow: #557174 0 1px 0;
-     margin:0px;
-     padding: 15px 10px;
+    font-size: 25px !important;
+    color: #C7CFB7;
+    text-shadow: #557174 0 1px 0;
+    margin: 0px;
+    padding: 15px 10px;
 }
 
-// .ribbon:before, .ribbon:after {
-//      content: '';
-//      position: absolute;
-//      display: block;
-//      bottom: -1em;
-//      border: 1.5em solid #f7f7e8;
-//      z-index: -1;
-// }
-
-// .ribbon:before {
-//      left: -2em;
-//      border-right-width: 1.5em;
-//      border-left-color: transparent;
-//      box-shadow: rgba(0,0,0,0.4) 1px 1px 1px;
-// }
-
-// .ribbon:after {
-//      right: -2em;
-//      border-left-width: 1.5em;
-//      border-right-color: transparent;
-//      box-shadow: rgba(0,0,0,0.4) -1px 1px 1px;
-// }
-
-// .ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
-//      border-color: #9DAD7F transparent transparent transparent;
-//      position: absolute;
-//      display: block;
-//      border-style: solid;
-//      bottom: -1em;
-//      content: '';
-// }
-
-// .ribbon .ribbon-content:before {
-//      left: 0;
-//      border-width: 1em 0 0 1em;
-// }
-
-// .ribbon .ribbon-content:after {
-//      right: 0;
-//      border-width: 1em 1em 0 0;
-// }
-
 .ribbon-stitches-top {
-     margin-top:2px;
-     border-top: 1px dashed rgba(0, 0, 0, 0.2);
-     box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.5);
+    margin-top: 2px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.5);
 }
 
 .ribbon-stitches-bottom {
-     margin-bottom:2px;
-     border-top: 1px dashed rgba(0, 0, 0, 0.2);
-     box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.3);
+    margin-bottom: 2px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.3);
 }
